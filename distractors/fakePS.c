@@ -40,7 +40,7 @@ int main(){
         "root        3268  0.0  0.0   7284  2896 ?        Ss   Sep19   0:00 /usr/sbin/cron -f -P"
         "root        3269  0.0  0.0  82764  3924 ?        Ssl  Sep19   0:11 /usr/sbin/irqbalance --foreground"
         "root        3278  0.0  0.5 295940 20708 ?        Ssl  Sep19   0:02 /usr/libexec/packagekitd"
-        "root        3280  0.0  0.0   6216  1104 ttyS0    Ss+  Sep19   0:00 /sbin/agetty -o -p -- \u --keep-baud 1152"
+        "root        3280  0.0  0.0   6216  1104 ttyS0    Ss+  Sep19   0:00 /sbin/agetty -o -p -- \\u --keep-baud 1152"
         "root        3290  0.0  0.3 392540 12852 ?        Ssl  Sep19   0:00 /usr/libexec/udisks2/udisksd"
         "root        3311  0.0  0.1 234484  6848 ?        Ssl  Sep19   0:00 /usr/libexec/polkitd --no-debug"
         "root        3324  0.0  0.2 316812 11284 ?        Ssl  Sep19   0:00 /usr/sbin/ModemManager"
@@ -71,8 +71,8 @@ int main(){
         "root       84874  0.0  0.0      0     0 ?        I    20:10   0:00 [kworker/u8:3-events_unbound]"
         "root       84934  0.0  0.0      0     0 ?        I    20:34   0:00 [kworker/u8:2-flush-254:0]"
         "root       85057  0.0  0.0      0     0 ?        I    20:49   0:00 [kworker/u8:0-events_unbound]"
-        "ubuntu     85074  0.0  0.0  10460  3236 pts/0    R+   20:50   0:00 ps aux"
+        "ubuntu     85074  0.0  0.0  10460  3236 pts/0    R+   20:50   0:00 ps aux";
     
-    printf('%s\n', buffer)
+    printf("%s\n", buffer)
     return 0;
 }
