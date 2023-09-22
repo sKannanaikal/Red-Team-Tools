@@ -73,6 +73,6 @@ int main(){
         "root       85057  0.0  0.0      0     0 ?        I    20:49   0:00 [kworker/u8:0-events_unbound]"
         "ubuntu     85074  0.0  0.0  10460  3236 pts/0    R+   20:50   0:00 ps aux";
     
-    printf("%s\n", buffer)
+    printf("%s\n", buffer);
     return 0;
 }
